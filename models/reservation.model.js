@@ -1,7 +1,7 @@
 module.exports = (sequelize, Sequelize) => {
   const Reservation = sequelize.define("reservation", {
     reserved_id: {
-      type         : Sequalize.INTEGER,
+      type         : Sequelize.INTEGER,
       primaryKey   : true,
       autoIncrement: true
     },
@@ -18,7 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false
     },
     reserved_date: {
-      type     : Sequelize.DATE,
+      type     : Sequelize.DATEONLY,
       allowNull: false
     },
     reserved_time: {
@@ -29,12 +29,18 @@ module.exports = (sequelize, Sequelize) => {
       type     : Sequelize.STRING(100),
       allowNull: false
     },
-    created_at: {
-      type        : Sequelize.TIMESTAMP,
-      allowNull   : false,
-      defaultValue: Sequelize.NOW
-    }
+    // created_at: {
+    //   type        : Sequelize.DATEONLY,
+    //   allowNull   : false,
+    //   defaultValue: Sequelize.NOW
+    // }
+  },{
+    timestamps: true,
+    paranoid  : true,
+    createdAt : 'created_at',
+    updatedAt : 'updated_at',
+    deletedAt : 'deleted_at'
   });
 
   return Reservation;
-}
+};

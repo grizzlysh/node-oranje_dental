@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 // find all
 exports.findAll = (req, res) => {
   const searchText = req.query.searchText;
-  var conditon = searchText ? { first_name: { [Op.iLike]: `%{searchText}%` } } : null;
+  var condition = searchText ? { first_name: { [Op.iLike]: `%{searchText}%` } } : null;
 
   Reservation.findAll({ where: condition })
     .then(data => {
