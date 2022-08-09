@@ -1,0 +1,40 @@
+module.exports = (sequelize, Sequelize) => {
+  const Reservation = sequelize.define("reservation", {
+    reserved_id: {
+      type         : Sequalize.INTEGER,
+      primaryKey   : true,
+      autoIncrement: true
+    },
+    first_name: {
+      type     : Sequelize.STRING(100),
+      allowNull: false
+    },
+    last_name: {
+      type     : Sequelize.STRING(100),
+      allowNull: false
+    },
+    reserved_total: {
+      type     : Sequelize.INTEGER(32),
+      allowNull: false
+    },
+    reserved_date: {
+      type     : Sequelize.DATE,
+      allowNull: false
+    },
+    reserved_time: {
+      type     : Sequelize.TIME,
+      allowNull: false
+    },
+    status: {
+      type     : Sequelize.STRING(100),
+      allowNull: false
+    },
+    created_at: {
+      type        : Sequelize.TIMESTAMP,
+      allowNull   : false,
+      defaultValue: Sequelize.NOW
+    }
+  });
+
+  return Reservation;
+}
